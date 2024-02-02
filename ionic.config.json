@@ -1,0 +1,7 @@
+{
+  "name": "Padelution APP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
