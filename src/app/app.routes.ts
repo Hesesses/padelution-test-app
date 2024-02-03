@@ -23,7 +23,7 @@ export const routes: Routes = [
     loadComponent: () => import('./leagues/leagues.page').then( m => m.LeaguesPage)
   },
   {
-    path: 'league',
+    path: 'leagues/:slug',
     loadComponent: () => import('./league/league.page').then( m => m.LeaguePage)
   },
   {
@@ -31,7 +31,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/pages.page').then( m => m.PagesPage)
   },
   {
-    path: 'page',
+    path: 'pages/:slug',
     loadComponent: () => import('./page/page.page').then( m => m.PagePage)
   },
   {

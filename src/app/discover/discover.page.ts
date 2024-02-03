@@ -7,7 +7,7 @@ import {
   IonButtons, IonCol,
   IonContent,
   IonGrid,
-  IonHeader, IonRow,
+  IonHeader, IonLabel, IonList, IonListHeader, IonRow,
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
@@ -18,7 +18,9 @@ import {
   styleUrls: ['./discover.page.scss'],
   standalone: true,
   imports: [IonHeader, IonToolbar, IonButtons, IonTitle, IonContent, IonBackButton,
-    IonGrid, IonRow, IonCol, CommonModule, FormsModule, RouterModule]
+    IonGrid, IonRow, IonCol, CommonModule, FormsModule, RouterModule,
+    IonList, IonLabel, IonListHeader
+  ]
 })
 export class DiscoverPage implements OnInit {
 

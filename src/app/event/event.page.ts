@@ -11,7 +11,6 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
-import {IonicHeaderParallaxModule} from "ionic-header-parallax";
 import { addIcons } from 'ionicons';
 import { playCircle, radio, library, search } from 'ionicons/icons';
 
@@ -23,7 +22,6 @@ import { playCircle, radio, library, search } from 'ionicons/icons';
   imports: [IonHeader, IonToolbar, IonButtons, IonTitle, IonContent, IonBackButton, IonSegment,
     IonSegmentButton, IonLabel,IonIcon,IonList, IonItem, IonItemGroup, IonItemDivider, IonGrid, IonRow, IonCol,
     IonFooter,IonTabs, IonTabBar, IonTabButton,
-    IonicHeaderParallaxModule,
     CommonModule, FormsModule, RouterModule]
 })
 export class EventPage implements OnInit {
