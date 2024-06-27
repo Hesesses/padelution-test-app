@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import {sharedRoutes} from "../shared.routes";
+import {AuthGuard} from "../guards/auth.guard";
 
 function getChildren(firstItem: any) {
   // console.log(sharedRoutes);
@@ -10,6 +11,7 @@ function getChildren(firstItem: any) {
 export const routes: Routes = [
   {
     path: 'tabs',
+    canActivate: [AuthGuard],
     component: TabsPage,
     children: [
       {

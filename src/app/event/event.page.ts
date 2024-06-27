@@ -39,6 +39,7 @@ export class EventPage implements OnInit {
   slug:string|null = null;
   selectedTab:string = 'info';
   selectedSub:string|null = '';
+  refresher:any = null;
   constructor(
     private route : ActivatedRoute,
     private location: Location,
@@ -56,21 +57,18 @@ export class EventPage implements OnInit {
     });
   }
 
-  handleRefresh(event:any) {
-    setTimeout(() => {
-      this.loadEvent(true);
-      // Any calls to load data go here
-      event.target.complete();
-    }, 2000);
+  handleRefresh(refresher:any) {
+    this.refresher = refresher;
+    this.loadEvent(true);
   }
 
   loadEvent(force = false) {
     const params = {} ;
     this.eventService.getEvent(this.slug || 'null', params, force).subscribe({
       next: (res) => {
-        // Append the results to our movies array
         console.log(res);
         this.event = res;
+        this.refresher?.target.complete();
       },
       error: (err) => {
         console.log(err);

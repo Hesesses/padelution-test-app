@@ -37,7 +37,7 @@ export class EventsPage implements OnInit {
   events: IEvent[] = [];
   public isLoading = true;
   public error = null;
-
+  refresher:any = null;
   constructor(
   ) {
     addIcons({ flag });
@@ -48,12 +48,9 @@ export class EventsPage implements OnInit {
     this.loadEvents();
   }
 
-  handleRefresh(event:any) {
-    setTimeout(() => {
-      this.loadEvents(true);
-      // Any calls to load data go here
-      event.target.complete();
-    }, 2000);
+  handleRefresh(refresher:any) {
+    this.refresher = refresher;
+    this.loadEvents(true);
   }
 
   loadEvents(force = false) {
@@ -62,6 +59,7 @@ export class EventsPage implements OnInit {
         next: (res) => {
           console.log(res);
           this.events = res.data;
+          this.refresher?.target.complete();
         },
         error: (err) => {
           console.log(err);
