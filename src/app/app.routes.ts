@@ -8,7 +8,7 @@ export const routes: Routes = [
 
   {
     path: 'login',
-    loadComponent: () => import('./login/login.page').then( m => m.EventsPage)
+    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
   },
   // {
   //   path: 'events',

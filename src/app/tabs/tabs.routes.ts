@@ -16,6 +16,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
+        canActivate: [AuthGuard],
         children: getChildren(
   {
             path: '',
@@ -25,6 +26,7 @@ export const routes: Routes = [
       },
       {
         path: 'play',
+        canActivate: [AuthGuard],
         children: getChildren(
           {
             path: '',
@@ -35,6 +37,7 @@ export const routes: Routes = [
       },
       {
         path: 'chats',
+        canActivate: [AuthGuard],
         children: getChildren(
           {
             path: '',
@@ -45,6 +48,7 @@ export const routes: Routes = [
       },
       {
         path: 'discover',
+        canActivate: [AuthGuard],
         children: getChildren(
           {
             path: '',
@@ -55,6 +59,7 @@ export const routes: Routes = [
       },
       {
         path: 'profile',
+        canActivate: [AuthGuard],
         children: getChildren(
           {
             path: '',

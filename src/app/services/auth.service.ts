@@ -24,8 +24,8 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl + '/login', { email, password })
+  login(email: string, password: string, device_name: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/login', { email, password, device_name })
       .pipe(map(user => {
         if (user && user.token) {
           localStorage.setItem('currentUser', JSON.stringify(user));
@@ -35,8 +35,15 @@ export class AuthService {
       }));
   }
 
-  register(email: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl + '/register', { email, password });
+  register(email: string, password: string, device_name: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/register', { email, password, device_name })
+      .pipe(map(user => {
+        if (user && user.token) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+        }
+        return user;
+      }));
   }
 
   logout() {
@@ -46,6 +53,11 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!this.currentUserValue;
+    const userJson = localStorage.getItem('currentUser');
+    if (userJson) {
+      const user = JSON.parse(userJson);
+      return !!user.token; // check if token exists
+    }
+    return false;
   }
 }
