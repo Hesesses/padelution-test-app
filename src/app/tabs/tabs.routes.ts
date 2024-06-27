@@ -1,5 +1,11 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import {sharedRoutes} from "../shared.routes";
+
+function getChildren(firstItem: any) {
+  // console.log(sharedRoutes);
+  return [firstItem,...sharedRoutes];
+}
 
 export const routes: Routes = [
   {
@@ -8,28 +14,52 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadComponent: () =>
-          import('../home/home.page').then((m) => m.HomePage),
+        children: getChildren(
+  {
+            path: '',
+            loadComponent: () => import('../home/home.page').then((m) => m.HomePage),
+          }
+        )
       },
       {
-        path: 'matches',
-        loadComponent: () =>
-          import('../matches/matches.page').then((m) => m.MatchesPage),
+        path: 'play',
+        children: getChildren(
+          {
+            path: '',
+            loadComponent: () =>
+              import('../play/play.page').then((m) => m.PlayPage),
+          }
+        )
       },
       {
         path: 'chats',
-        loadComponent: () =>
-          import('../chats/chats.page').then((m) => m.ChatsPage),
+        children: getChildren(
+          {
+            path: '',
+            loadComponent: () =>
+              import('../chats/chats.page').then((m) => m.ChatsPage),
+          }
+        )
       },
       {
         path: 'discover',
-        loadComponent: () =>
-          import('../discover/discover.page').then((m) => m.DiscoverPage),
+        children: getChildren(
+          {
+            path: '',
+            loadComponent: () =>
+              import('../discover/discover.page').then((m) => m.DiscoverPage),
+          }
+        )
       },
       {
         path: 'profile',
-        loadComponent: () =>
-          import('../profile/profile.page').then((m) => m.ProfilePage),
+        children: getChildren(
+          {
+            path: '',
+            loadComponent: () =>
+              import('../profile/profile.page').then((m) => m.ProfilePage),
+          }
+        )
       },
       {
         path: '',

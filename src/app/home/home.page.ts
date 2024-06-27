@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {Router, RouterModule} from "@angular/router";
@@ -10,11 +10,13 @@ import {
   IonContent, IonFab, IonFabButton, IonFabList,
   IonHeader, IonIcon, IonLabel,
   IonTitle,
-  IonToolbar
+  IonToolbar, ModalController
 } from "@ionic/angular/standalone";
 import { addIcons } from 'ionicons';
 import {add, navigate, chevronUpCircle} from "ionicons/icons";
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {EnterMatchResultsComponent} from "../components/enter-match-results/enter-match-results.component";
+import {ChangeLocationComponent} from "../components/change-location/change-location.component";
 
 
 @Component({
@@ -27,6 +29,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     , CommonModule, FormsModule, RouterModule]
 })
 export class HomePage implements OnInit {
+  @ViewChild('page') page: ElementRef | undefined;
   isCreateMenuOpen = false;
   public createMenuButtons = [
     {
@@ -61,14 +64,45 @@ export class HomePage implements OnInit {
       },
     },
   ];
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private modalController: ModalController,
+    ) {
     addIcons({ add, navigate, chevronUpCircle });
   }
 
   ngOnInit() {
   }
 
+  async openChangeLocationModal() {
+    console.log(this.page || 'no page');
+    const modal = await this.modalController.create({
+      component: ChangeLocationComponent,
+      componentProps: {
+        // matchId: 123123,
+      },
+      presentingElement: this.page?.nativeElement,
+    });
+    modal.present();
 
+    const { data, role } = await modal.onWillDismiss();
+    console.log(data, role);
+  }
+
+  async openModal() {
+    console.log(this.page || 'no page');
+    const modal = await this.modalController.create({
+      component: EnterMatchResultsComponent,
+      componentProps: {
+        matchId: 123123,
+      },
+      presentingElement: this.page?.nativeElement,
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+    console.log(data, role);
+  }
 
   createMenuResult(ev: any) {
     this.isCreateMenuOpen = false;

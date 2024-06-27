@@ -1,123 +1,30 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-toolbar >
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/events"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/discover/events"></ion-back-button>
     </ion-buttons>
-    <ion-title>Hese event</ion-title>
+<!--    <ion-title>Hese event</ion-title>-->
   </ion-toolbar>
 </ion-header>
+<ion-content [fullscreen]="true" appParallaxHeader [scrollEvents]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+<!--  <div >-->
+<!--    <ion-img class="bgr" src="https://pbs.twimg.com/media/FbUbyt5XEAAghNM.jpg">-->
+<!--  https://pbs.twimg.com/media/FKqNHROXMAIHaip?format=jpg&name=large-->
+<!--  https://pbs.twimg.com/media/FKqNHRRXwAI5IhJ?format=jpg&name=large-->
+<!--  https://aifkpadel.fi/wp-content/uploads/2023/09/image_50462209-scaled.jpg-->
+<!--    </ion-img>-->
+<!--  </div>-->
 
-<ion-content [fullscreen]="true" sc>
-  event here
+    <div class="spotlight parallax-image" [style.background-image]="'url(https://aifkpadel.fi/wp-content/uploads/2023/09/image_50462209-scaled.jpg)'">
+      <div class="title text-2xl text-bold font-sans">Hese event</div>
+      <div class="gradient"></div>
+    </div>
 
-  <ion-list [inset]="true">
-    <ion-item>
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mega Man X</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pac-Man</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Super Mario World</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mega Man X</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pac-Man</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Super Mario World</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mega Man X</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pac-Man</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Super Mario World</ion-label>
-    </ion-item>
-  </ion-list>
-
-  <ion-list [inset]="true">
-    <ion-item>
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mega Man X</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pac-Man</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Super Mario World</ion-label>
-    </ion-item>
-  </ion-list>
-  <ion-list [inset]="true">
-    <ion-item>
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mega Man X</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pac-Man</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Super Mario World</ion-label>
-    </ion-item>
-  </ion-list>
-
-  <ion-list [inset]="true">
-    <ion-item>
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mega Man X</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pac-Man</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Super Mario World</ion-label>
-    </ion-item>
-  </ion-list>
-
-</ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-segment [scrollable]="true" value="info">
+  <div class="stickybar sticky top-0 bg-gray-900 z-50 py-2">
+    <ion-segment class="bg-gray-900" [ngModel]="selectedTab" (ionChange)="changeTab($event)" [scrollable]="true" value="info" mode="md">
       <ion-segment-button value="info">
         Info
       </ion-segment-button>
@@ -138,25 +45,30 @@
       </ion-segment-button>
 
     </ion-segment>
-  </ion-toolbar>
-</ion-footer>
-<!--<ion-tabs>-->
-<!--  <ion-tab-bar slot="bottom">-->
-<!--    <ion-tab-button tab="home">-->
-<!--      <ion-icon name="play-circle"></ion-icon>-->
-<!--      Listen Now-->
-<!--    </ion-tab-button>-->
-<!--    <ion-tab-button tab="radio">-->
-<!--      <ion-icon name="radio"></ion-icon>-->
-<!--      Radio-->
-<!--    </ion-tab-button>-->
-<!--    <ion-tab-button tab="library">-->
-<!--      <ion-icon name="library"></ion-icon>-->
-<!--      Library-->
-<!--    </ion-tab-button>-->
-<!--    <ion-tab-button tab="search">-->
-<!--      <ion-icon name="search"></ion-icon>-->
-<!--      Search-->
-<!--    </ion-tab-button>-->
-<!--  </ion-tab-bar>-->
-<!--</ion-tabs>-->
+  </div>
+    <div style="min-height:1000px" class="bg-gray-900">
+      <div [ngSwitch]="selectedTab" >
+        <div *ngSwitchCase="'info'">
+          <app-event-info></app-event-info>
+        </div>
+        <div *ngSwitchCase="'participants'">
+          <app-event-participants></app-event-participants>
+        </div>
+      </div>
+    </div>
+</ion-content>
+
+
+<!--<ion-content [fullscreen]="true" >-->
+<!--  <ion-img-->
+<!--    src="https://pbs.twimg.com/media/FbUbyt5XEAAghNM.jpg"-->
+<!--    alt="The Wisconsin State Capitol building in Madison, WI at night"-->
+<!--  ></ion-img>-->
+
+
+
+
+<!--</ion-content>-->
+
+
+

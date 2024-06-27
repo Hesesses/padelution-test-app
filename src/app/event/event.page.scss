@@ -1,0 +1,69 @@
+//ion-toolbar {
+//  --background: linear-gradient(162deg, rgba(56, 70, 108, .8) 20%, rgba(56, 70, 108, .8) 100%), url('https://docs-demo.ionic.io/assets/madison.jpg') bottom no-repeat;
+//}
+//
+//ion-content .bg{
+//  height: 500px;
+//  --background: #fff url('https://pbs.twimg.com/media/FKqNHRRXwAI5IhJ.jpg:large') no-repeat center center / cover;
+//}
+//
+//ion-toolbar {
+//  --ion-toolbar-background:transparent;
+//}
+//
+//.bgr {
+//  height: 100%;
+//  width: 100%;
+//  top: 0;
+//  position: fixed;
+//  background-size: 100% 100%;
+//  background-repeat: no-repeat;
+//  object-fit: cover;
+//}
+//
+//.page-content {
+//  position: relative;
+//  top: 260px;
+//}
+
+ion-toolbar {
+  //--ion-toolbar-background:transparent;
+  --background: linear-gradient(180deg, rgba(0, 0, 0, 0.8715861344537815) 0%, rgba(0, 0, 0, 0.8463760504201681) 57%, rgba(0, 0, 0, 0.6923144257703081) 80%, rgba(0, 0, 0, 0.5438550420168067) 89%, rgba(0, 0, 0, 0) 100%);
+}
+
+ion-content {
+  --offset-top: 0xp;
+  position: absolute;
+}
+.spotlight {
+  width: 100%;
+  height: 30vh;
+  background-position: center;
+  background-size: cover;
+  //margin-bottom: 20px;
+  position: relative;
+
+  .gradient {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#ffffff00 40%, #000000c2, #111826 95%);
+  }
+  .title {
+    position: absolute;
+    bottom: 40px;
+    color: white;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+
+.stickybar {
+  top: calc(var(--ion-safe-area-top) + 2rem);
+}
+
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
