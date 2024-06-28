@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import {IonicModule, NavController} from '@ionic/angular';
@@ -10,13 +10,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule, FormsModule]
+  imports: [CommonModule, IonicModule, FormsModule, RouterLink]
 })
 export class RegisterPage {
 
-  email: string;
-  password: string;
-  error: string;
+  email: string = '';
+  password: string = '';
+  error: string = '';
 
   constructor(private authService: AuthService, private navCtrl: NavController) { }
 
