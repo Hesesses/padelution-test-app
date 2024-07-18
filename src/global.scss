@@ -32,13 +32,13 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
+// conflicts with tailwind
 @import '@ionic/angular/css/palettes/dark.always.css';
 
 
 //@tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 
 @import "flags.css";

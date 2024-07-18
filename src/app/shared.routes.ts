@@ -18,7 +18,7 @@ export const sharedRoutes: Routes = [
     loadComponent: () => import('./event/event.page').then( m => m.EventPage)
   },
   {
-    path: 'chat/:id',
+    path: 'chats/:uuid',
     loadComponent: () => import('./chat/chat.page').then( m => m.ChatPage)
   },
   {

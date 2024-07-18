@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import {IonApp, IonRouterOutlet, Platform} from '@ionic/angular/standalone';
 import { register } from 'swiper/element/bundle';
+import {LaravelEchoService} from "./services/laravel-echo.service";
+import {StorageService} from "./services/storage.service";
+import {AuthService} from "./services/auth.service";
 
 register();
 
@@ -10,8 +13,25 @@ register();
   standalone: true,
   imports: [IonApp, IonRouterOutlet],
 })
-export class AppComponent {
-  constructor() {
+export class AppComponent implements OnInit, OnDestroy {
+  constructor(
+    private platform: Platform,
+  ) {
+    this.initializeApp();
+  }
 
+  initializeApp() {
+    this.platform.ready().then(() => {
+      // Platform-specific initialization code if needed
+    });
+  }
+
+  ngOnInit() {
+
+
+  }
+
+  ngOnDestroy() {
+    // this.laravelEchoService.disconnect();
   }
 }

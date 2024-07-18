@@ -29,6 +29,52 @@ export interface IEvent {
   host?: IPage,
 }
 
+export interface IMessage {
+  uuid: string;
+  c_uuid: string;
+  sender : {
+    id: string;
+    name: string;
+  }
+  content: string;
+  message_type: number;
+  media_url: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IChatUser {
+  uuid: string;
+  firstname: string;
+  lastname: string;
+}
+
+export interface IChat {
+  uuid: string;
+  name: string;
+  last_message?: IMessage;
+  participants?: IChatUser[];
+  unread_messages_count: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IChatApiSingleResponse<T> {
+  data: T;
+}
+
+export interface IChatApiCollectionResponse<T> {
+  data: T[];
+}
+//
+// export interface IChatStructure {
+//   [uuid: string]: IChat;
+// }
+//
+// export interface IChatsCollection<T> {
+//   data: T;
+// }
+
 export interface IApiResponse<T> {
   data: T[];
   links?: any;

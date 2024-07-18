@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {BehaviorSubject, from, Observable, of} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 import {environment} from "../../environments/environment";
+import {GenericOAuth2} from "@capacitor-community/generic-oauth2";
+import {NavController} from "@ionic/angular";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class AuthService {
   public currentUser: Observable<any>;
   private apiUrl = environment.apiUrl + 'v1/auth';
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient,  private navCtrl: NavController) {
     const userJson = localStorage.getItem('currentUser');
     const currentUser = userJson ? JSON.parse(userJson) : null;
     this.currentUserSubject = new BehaviorSubject<any>(currentUser);
@@ -22,6 +24,11 @@ export class AuthService {
 
   public get currentUserValue(): any {
     return this.currentUserSubject.value;
+  }
+
+  setCurrentUser(user: any) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.currentUserSubject.next(user);
   }
 
   login(email: string, password: string, device_name: string): Observable<any> {
@@ -47,13 +54,21 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-    this.router.navigate(['/login']);
+    this.http.post<any>(environment.apiUrl + 'v1/auth/logout', { }).subscribe({
+      next: data => {
+        localStorage.removeItem('currentUser');
+        this.currentUserSubject.next(null);
+        this.navCtrl.navigateRoot('/login', { animated: false });
+      },
+      error: error => {
+        console.error('There was an error!', error);
+      }
+    })
   }
 
   isAuthenticated(): boolean {
     const userJson = localStorage.getItem('currentUser');
+    // console.log(userJson);
     if (userJson) {
       const user = JSON.parse(userJson);
       return !!user.token; // check if token exists

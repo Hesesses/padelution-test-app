@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   apiUrl: 'https://padelution.localhost/api/',
   chatApiUrl: 'https://padelution-chat.localhost/api/',
   pusher: {
@@ -7,8 +7,8 @@ export const environment = {
     key: '3okODQ',
   },
   oauthClientId: '9c75288f-31a7-48c2-a86d-e635b23ab323',
-  oauthAppRedirectUri: 'http://localhost:8100/auth/callback',
-  oauthWebRedirectUri: 'http://localhost:8100/auth/callback',
+  oauthAppRedirectUri: 'http://localhost:8100',
+  oauthWebRedirectUri: 'http://localhost:8100',
   oauthAuthorizationUrl: 'https://padelution.localhost/oauth/authorize',
   oauthTokenUrl: 'https://padelution.localhost/oauth/token',
   ablyPublicKey: 'Z7zhZw.3okODQ',

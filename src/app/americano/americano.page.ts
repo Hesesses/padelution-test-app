@@ -25,6 +25,7 @@ export class AmericanoPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('AmericanoPage')
   }
 
 }

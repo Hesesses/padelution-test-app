@@ -24,7 +24,7 @@ import {RouterModule} from "@angular/router";
   ]
 })
 export class EnterMatchResultsComponent  implements OnInit {
-  @Input('matchId') matchId: number | undefined;
+  @Input() matchId: number | undefined;
 
   constructor(
     private modalController: ModalController

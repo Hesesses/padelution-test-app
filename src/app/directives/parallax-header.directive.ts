@@ -1,11 +1,11 @@
-import {Directive, ElementRef, HostListener, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostListener, OnInit, Renderer2} from '@angular/core';
 import {DomController} from "@ionic/angular";
 
 @Directive({
   selector: '[appParallaxHeader]',
   standalone: true
 })
-export class ParallaxHeaderDirective {
+export class ParallaxHeaderDirective implements OnInit{
   header: any;
   headerHeight: number = 0;
   moveImage: number = 0;
