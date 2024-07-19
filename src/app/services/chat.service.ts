@@ -80,7 +80,7 @@ export class ChatService {
     console.log(convertQueryParams(params));
     return this.http.get<IChatApiSingleResponse<IChat>>(BASE_URL + '/' + uuid, { params: convertQueryParams(params) }).pipe(
       switchMap((response) => {
-        return from(this.storageService.set(STORAGE_KEY + '_' + uuid, response)).pipe(
+        return from(this.storageService.set(STORAGE_KEY + '_' + uuid, response.data)).pipe(
           map(() => response)
         );
       }),

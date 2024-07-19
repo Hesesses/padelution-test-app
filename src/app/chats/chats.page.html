@@ -22,6 +22,10 @@
   <ion-list>
     <div *ngFor="let chat of chats">
       <ion-item [routerLink]="['chats/' + chat.uuid]">
+        <ion-avatar slot="start">
+          <img alt="{{ chat.name }}" src="{{ chat.profile_photo_path ? chat.profile_photo_path : 'https://ionicframework.com/docs/img/demos/avatar.svg' }}" />
+        </ion-avatar>
+        <ion-badge slot="end">{{ chat.unread_messages_count > 0 ? chat.unread_messages_count : ''}}</ion-badge>
         <ion-label>
           <h3>{{ chat.name }}</h3>
           <p>{{ chat.last_message?.content ?? '' }}</p>

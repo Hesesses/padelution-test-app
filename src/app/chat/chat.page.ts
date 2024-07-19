@@ -2,6 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
+  IonAvatar,
   IonBackButton, IonButton,
   IonButtons,
   IonContent,
@@ -11,7 +12,7 @@ import {
   IonToolbar
 } from "@ionic/angular/standalone";
 import {IChat, IMessage} from "../services/interfaces";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterModule} from "@angular/router";
 import {MessageService} from "../services/message.service";
 import {ChatService} from "../services/chat.service";
 import {LaravelEchoService} from "../services/laravel-echo.service";
@@ -22,7 +23,7 @@ import {AuthService} from "../services/auth.service";
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonFooter, IonTextarea, IonList, IonItem, IonLabel, IonButtons, IonButton, IonIcon, IonTitle, IonContent, IonBackButton, CommonModule, FormsModule]
+  imports: [IonHeader, IonToolbar, IonFooter, IonTextarea, IonList, IonItem, IonLabel, IonButtons, IonButton, IonAvatar, IonIcon, IonTitle, IonContent, IonBackButton, CommonModule, FormsModule, RouterModule]
 })
 export class ChatPage implements OnInit {
   private messageService = inject(MessageService);

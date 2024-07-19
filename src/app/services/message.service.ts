@@ -29,7 +29,7 @@ export class MessageService {
       return from(this.storageService.get(STORAGE_KEY + '_' + uuid + '_messages')).pipe(
         switchMap((storedEvent) => {
           if (storedEvent) {
-            return from([{'data': storedEvent}]);
+            return from([storedEvent]);
           } else {
             return this.fetchAndStoreChat(uuid, params);
           }
@@ -47,7 +47,7 @@ export class MessageService {
     return this.http.get<IChatApiCollectionResponse<IMessage>>(BASE_URL + '/' + uuid + '/messages', { params: convertQueryParams(params) }).pipe(
       switchMap((response) => {
         console.log(response);
-        return from(this.storageService.set(STORAGE_KEY + '_' + uuid + '_messages', response)).pipe(
+        return from(this.storageService.set(STORAGE_KEY + '_' + uuid + '_messages', response.data)).pipe(
           map(() => response)
         );
       }),
@@ -57,6 +57,7 @@ export class MessageService {
       })
     );
   }
+
 
   createMessage(uuid:string, params:any): Observable<IChatApiSingleResponse<IMessage>> {
     // console.log(params);
@@ -68,6 +69,11 @@ export class MessageService {
     );
   }
 
+  /*
+  * Update local chats timestamp and last_message with a new message.
+  * chats listing will be sorted by updated_at timestamp and shows the last message.
+  * This is used from chats and chat/id pages.
+   */
   updateLocalChatsWithNewMessage(message: any) {
     console.log(message);
     this.storageService.get(STORAGE_KEY).then((chats) => {

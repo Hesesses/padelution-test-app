@@ -45,6 +45,8 @@ export interface IMessage {
 
 export interface IChatUser {
   uuid: string;
+  name: string;
+  profile_photo_path: string;
   firstname: string;
   lastname: string;
 }
@@ -52,6 +54,7 @@ export interface IChatUser {
 export interface IChat {
   uuid: string;
   name: string;
+  profile_photo_path: string;
   last_message?: IMessage;
   participants?: IChatUser[];
   unread_messages_count: number;

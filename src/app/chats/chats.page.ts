@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {RouterModule} from "@angular/router";
 import {
-  IonBackButton, IonButton,
+  IonAvatar,
+  IonBackButton, IonBadge, IonButton,
   IonButtons,
   IonContent,
   IonHeader, IonIcon, IonLabel,
@@ -18,18 +19,20 @@ import {add, navigate, chevronUpCircle} from "ionicons/icons";
 import {LaravelEchoService} from "../services/laravel-echo.service";
 import {AuthService} from "../services/auth.service";
 import {MessageService} from "../services/message.service";
+import {environment} from "../../environments/environment";
+
 
 @Component({
   selector: 'app-chats',
   templateUrl: './chats.page.html',
   styleUrls: ['./chats.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonRefresher, IonRefresherContent, IonButtons, IonButton, IonIcon, IonTitle, IonContent, IonBackButton, IonList, IonLabel,
+  imports: [IonHeader, IonToolbar, IonRefresher, IonRefresherContent, IonButtons, IonBadge, IonButton, IonAvatar, IonIcon, IonTitle, IonContent, IonBackButton, IonList, IonLabel,
     CommonModule, FormsModule, RouterModule]
 })
 export class ChatsPage implements OnInit {
   private chatService = inject(ChatService);
-
+  public env = environment;
   presentingElement: HTMLElement | null = null;
 
   chats: IChat[] = [];

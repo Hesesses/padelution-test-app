@@ -1,16 +1,19 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Welcome</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="ion-page" #page>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
+  <ion-content>
 
-  <ion-button expand="full" (click)="login()">Login</ion-button>
 
-<!--  <ion-text color="danger">{{ error }}</ion-text>-->
+    <ion-button expand="full" (click)="openLoginModal()">Login</ion-button>
 
-  <p>
-    <ion-button fill="clear" [routerLink]="['/register']">Don't have an account? Register</ion-button>
-  </p>
-</ion-content>
+<!--    <ion-text color="danger">{{ error }}</ion-text>-->
+
+    <p>
+      <ion-button fill="clear" [routerLink]="['/register']">Don't have an account? Register</ion-button>
+    </p>
+  </ion-content>
+</div>

@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>Login with OAuth</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -17,9 +20,4 @@
 
   <ion-button expand="full" (click)="login()">Login</ion-button>
 
-  <ion-text color="danger">{{ error }}</ion-text>
-
-  <p>
-    <ion-button fill="clear" [routerLink]="['/register']">Don't have an account? Register</ion-button>
-  </p>
 </ion-content>

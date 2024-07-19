@@ -35,10 +35,29 @@ export class AuthService {
     return this.http.post<any>(this.apiUrl + '/login', { email, password, device_name })
       .pipe(map(user => {
         if (user && user.token) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
+          console.log(user);
+          localStorage.setItem('currentUser', JSON.stringify({'token': user.token}));
+          // this.currentUserSubject.next(user);
         }
         return user;
+      }));
+  }
+
+  getUserDetails():Observable<any> {
+    // let token = JSON.parse(localStorage.getItem('currentUser')).token ?? '';
+    const token: string = JSON.parse(localStorage.getItem('currentUser') ?? '').token ;
+    console.log(token);
+    return this.http.get<any>(environment.apiUrl + 'v1/users/me').pipe(map(response => {
+      console.log(response);
+        this.setCurrentUser({
+          id: response.id,
+          firstname: response['firstname'],
+          lastname: response['lastname'],
+          profile_photo_url: response['profile_photo_url'],
+          elo_rating: response['elo_rating'],
+          token: token,
+        })
+        return response;
       }));
   }
 
@@ -46,6 +65,7 @@ export class AuthService {
     return this.http.post<any>(this.apiUrl + '/register', { email, password, device_name })
       .pipe(map(user => {
         if (user && user.token) {
+          console.log(user);
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
         }
