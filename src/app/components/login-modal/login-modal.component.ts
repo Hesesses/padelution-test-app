@@ -46,9 +46,9 @@ export class LoginModalComponent  implements OnInit {
         this.authService.getUserDetails().subscribe({
           next: data => {
             console.log("redirecting to /tabs/home");
-            this.navCtrl.navigateRoot('/tabs/home');
             console.log("dismiss modal");
             this.modalController.dismiss();
+            this.navCtrl.navigateRoot('/tabs/home');
           }
         })
       },

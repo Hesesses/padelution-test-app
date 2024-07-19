@@ -10,7 +10,7 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-event-participants',
@@ -31,6 +31,7 @@ export class EventParticipantsComponent  implements OnInit {
   selectedSub:string = 'miehet-a';
 
   constructor(
+    private router: Router,
     private route : ActivatedRoute,
     private location: Location,
   ) { }
@@ -45,7 +46,8 @@ export class EventParticipantsComponent  implements OnInit {
 
   changeSub(event:any) {
     this.selectedSub = event.detail.value;
-    this.location.go(`/events/${this.slug}/${this.selectedTab}/${this.selectedSub}`);
+    let basePath = this.router.url.split('/').slice(0, 3).join('/');
+    this.location.go(basePath + `/events/${this.slug}/${this.selectedTab}/${this.selectedSub}`);
   }
 
 }

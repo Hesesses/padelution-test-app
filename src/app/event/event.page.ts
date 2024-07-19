@@ -1,7 +1,7 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit} from '@angular/core';
 import { Location, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {ActivatedRoute, RouterModule} from "@angular/router";
+import {ActivatedRoute, Router, RouterModule} from "@angular/router";
 import {
   IonBackButton,
   IonButtons, IonCol,
@@ -41,6 +41,7 @@ export class EventPage implements OnInit {
   selectedSub:string|null = '';
   refresher:any = null;
   constructor(
+    private router: Router,
     private route : ActivatedRoute,
     private location: Location,
   ) {
@@ -79,8 +80,12 @@ export class EventPage implements OnInit {
 
   changeTab(event:any) {
     this.selectedTab = event.detail.value;
-    this.location.go(`${this.selectedTab}`);
-    this.location.go(`/events/${this.slug}/${this.selectedTab}`);
+    console.log(this.route);
+    console.log(this.router);
+    let basePath = this.router.url.split('/').slice(0, 3).join('/');
+    console.log(basePath);
+    // this.location.go(`${this.selectedTab}`);
+    this.location.go(basePath +`/events/${this.slug}/${this.selectedTab}`);
   }
 
 }

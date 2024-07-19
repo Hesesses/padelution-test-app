@@ -43,9 +43,21 @@
 
 @import "flags.css";
 ion-segment {
-  //--background: #54dc98;
+  --background: var(--ion-color-secondary-600) !important;
   //height: 40px;
 }
 ion-segment::-webkit-scrollbar {
   display: none;
+}
+
+ion-header {
+  --ion-background-color: var(--ion-color-secondary-600) !important;
+
+  ion-toolbar {
+    --background: var(--ion-color-secondary-600) !important;
+  }
+}
+ion-modal {
+  --ion-background-color: var(--ion-color-secondary-700) !important;
+  --ion-toolbar-background: var(--ion-color-secondary-600) !important;
 }
