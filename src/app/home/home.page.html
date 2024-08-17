@@ -1,5 +1,5 @@
 <div class="ion-page" #page>
-  <ion-header [translucent]="true">
+  <ion-header class="ion-no-border">
     <ion-toolbar>
       <ion-buttons slot="start">
         <ion-button (click)="openChangeLocationModal()">
@@ -16,6 +16,15 @@
         Padelution
       </ion-title>
     </ion-toolbar>
+
+    <ion-segment value="default" class="ion-padding rounded-none">
+      <ion-segment-button value="default">
+        <ion-label>Overview</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="segment">
+        <ion-label>Favorites</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-header>
 
   <ion-content [fullscreen]="true">

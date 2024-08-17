@@ -33,7 +33,7 @@
 
 
 .stickybar {
-  top: calc(var(--ion-safe-area-top) + 0rem);
+  top: calc(var(--ion-safe-area-top) - 2rem);
 }
 
 ::-webkit-scrollbar,

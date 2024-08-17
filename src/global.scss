@@ -46,8 +46,14 @@ ion-segment {
   --background: var(--ion-color-secondary-600) !important;
   //height: 40px;
 }
+
 ion-segment::-webkit-scrollbar {
   display: none;
+}
+// md version is underline only
+ion-segment-button.ios {
+  --background-checked: var(--ion-color-primary-500);
+
 }
 
 ion-header {
@@ -61,3 +67,6 @@ ion-modal {
   --ion-background-color: var(--ion-color-secondary-700) !important;
   --ion-toolbar-background: var(--ion-color-secondary-600) !important;
 }
+
+
+

@@ -69,10 +69,12 @@ export class EventPage implements OnInit {
       next: (res) => {
         console.log(res);
         this.event = res;
-        this.refresher?.target.complete();
       },
       error: (err) => {
         console.log(err);
+      },
+      complete:() => {
+        this.refresher?.target.complete();
       }
     })
   }
